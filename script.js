@@ -102,7 +102,7 @@ class Calculator {
 
     appendToLastInput(value){
         const lastItem = this.inputHistory[this.inputHistory.length - 1];
-        if(lastItem.value.length <= 12) {
+        if(lastItem.value.length <= 9) {
             lastItem.value += value.toString();
             this.updateDisplay();
         }
@@ -118,10 +118,10 @@ class Calculator {
         this.updateDisplay();
     }
 
-
     updateDisplay(){
-        this.display.value = this.getAllInputValues().join("");
+        this.display.innerHTML = this.getAllInputValues().join("");
     }
+
 
     performOperation(leftOperand, operation, rightOperand){
         leftOperand = parseFloat(leftOperand);
@@ -155,7 +155,6 @@ const backspaceBtn = document.querySelector('[data-backspace]');
 const allClearBtn = document.querySelector('[data-all-clear]');
 const decimalBtn = document.querySelector("[data-decimal]")
 const equalsBtn = document.querySelector('[data-equals]');
-
 
 //
 
@@ -191,4 +190,5 @@ decimalBtn.addEventListener("click", () => {
 equalsBtn.addEventListener("click", () => {
     calculator.generateResult();
 })
+
 

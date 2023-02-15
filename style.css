@@ -1,22 +1,31 @@
 
+:root {
+    --pink: #ff00d0;
+    --dark-pink: #ff005b;
+    --blue: #2196F3;
+    --green: #00E676;
+    --orange: #ff5100;
+}
+
 @font-face {
     font-family: "Pacific";
     src: url(./font/Pacifico-Regular.ttf);
 }
 html {
     height: 100%;
-    font-size: 62.5%;
+    font-size: 72.5%;
     background-size: cover;
-    box-sizing: border-box;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url(/img/brick-wall.png);
+    background-image: url(./img/brick-wall.png);
+    font-family: monospace;
 }
 
 *, *::before, *::after {
     margin: 0;
     padding: 0;
-    box-sizing: inherit;
+    box-sizing: border-box;
+
 }
 h1 {
     display: flex;
@@ -26,140 +35,108 @@ h1 {
     align-items: center;
     flex-direction: column;
     font-family: "Pacific";
-    margin: 10px 20px 20px 20px;
-    text-shadow:
-    2px 2px 1px rgba(0,0,0,.4),
-    0 0 20px #fe3a80,
-    0 0 40px rgba(255, 0, 91, .75),
-    0 0 50px rgba(255, 0, 91, .75),
-    0 0 100px rgba(255, 0, 91, .75);
-}
-.calculator {
+    margin: 0;
+    line-height: 1;
+    text-shadow: 2px 2px 1px rgba(0,0,0,.4),
+        0 0 20px #fe3a80,
+        0 0 40px rgba(255, 0, 91, .75),
+        0 0 50px rgba(255, 0, 91, .75),
+        0 0 100px rgba(255, 0, 91, .75);
+    }
+main {
     top: 50%;
     left: 50%;
-    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 0.4em;
     border-radius: 5px;
     position: absolute;
     transform: translate(-50%, -50%);
+    gap: 30px;
 }
+
+.calculator {
+    border-radius: 25px;
+    background-color: #252525;
+    border: 0.2rem solid #fff;
+    box-shadow: 0 0 15px var(--pink), inset 0 0 15px var(--pink), 10px 10px 20px 20px rgba(0,0,0,.4);
+}
+
 #display{
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
     width: 100%;
     height: 80px;
     color: #fff;
-    text-align: right;
-    padding-right: 20px;
-    padding-left: 10px;
-    border: none;
-    margin-bottom: 30px;
-    border-radius: 25px;
-    background-color: #252525;
-    box-shadow: 0 0 15px #ff00d0, inset 0 0 15px #ff00d0;
-}
-input:disabled {
-        cursor: default;
-        background-color: transparent;
-        color: none;
-        border: none;
-        border-color: none;
-        font-size: 2rem;
-        color: #fff;
-
-
-}
-#result {
-    font-size: 4rem;
-
-}
-button{
-    height: 50px;
-    width: 50px;
     font-size: 2rem;
-    border-radius: 2rem;
-    padding: 0.4em;
-    background-color: transparent;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: right;
+    line-height: 80px;
+    padding-left: 20px;
+    padding-right: 20px;
+    flex-direction: column;
+    letter-spacing: 1.3px;
+    align-items: flex-end;
+    --neon-color: var(--orange);
+    text-shadow: 0 0 7px var(--neon-color),
+        0 0 10px var(--neon-color),
+        0 0 21px var(--neon-color),
+        0 0 42px var(--neon-color);
 }
-button:hover{
-    background-color: #a19a9a;
-}
-.all-clear{
-    width: 150px;
-    grid-column: span 2;
-    border: 0.2rem solid #fff;
-    border-radius: 2rem;
-    padding: 0.4em;
-    color: #00c77b;
-    box-shadow: 0 0 15px #00E676, inset 0 0 15px #00E676;
-}
-#equals, .delete {
-    border: 0.2rem solid #fff;
-    border-radius: 2rem;
-    padding: 0.4em;
-    color: #00c77b;
-    box-shadow: 0 0 15px #00E676, inset 0 0 15px #00E676;
-}
-#equals:hover {
-    background-color: #a19a9a;
-}
-.delete p, .all-clear p, #equals p{
-    color: #fff;
-    text-shadow: 0 0 7px #fff,
-    0 0 10px #ff5100,
-    0 0 21px #ff5100,
-    0 0 42px #ff5100,
-    0 0 82px #ff5100,
-    0 0 92px #ff5100,
-    0 0 102px #ff5100,
-    0 0 151px #ff5100;;
-}
+
 #keys{
     border-radius: 25px;
-    box-sizing: border-box;
     display: grid;
-    grid-row-gap: 20px;
-    grid-column-gap: 20px;
-    justify-items: center;
-    background-color: #252525;
+    gap: 20px;
     padding: 30px 30px 30px 30px;
-    grid-template-columns: repeat(4, 1fr) ;
-    box-shadow: 0 0 15px #ff00d0, inset 0 0 15px #ff00d0;
-
-}
-#keys .number{
-    border: 0.2rem solid #fff;
-    box-shadow: 0 0 15px #ff005b, inset 0 0 15px #ff005b;
-}
-#keys .number p{
-    color: #fff;
-    text-shadow: 0 0 7px #fff,
-    0 0 10px #ff5100,
-    0 0 21px #ff5100,
-    0 0 42px #ff5100,
-    0 0 82px #ff5100,
-    0 0 92px #ff5100,
-    0 0 102px #ff5100,
-    0 0 151px #ff5100;;
-}
-#keys .operator{
-    border: 0.2rem solid #fff;
-    box-shadow: 0 0 15px #2196F3, inset 0 0 15px #2196F3;
-    /* box-shadow: 0 0 7px #fff,
-    0 0 82px #00fee9,
-    0 0 151px #00fee9; */
-}
-#keys .operator p{
-    color: #fff;
-    text-shadow: 0 0 7px #fff,
-    0 0 42px #00d5ff,
-    0 0 92px #00d5ff,
-    0 0 102px #00d5ff,
-    0 0 151px #00d5ff
+    grid-template-columns: repeat(4, 60px) ;
+    grid-auto-rows: 60px;
 }
 
-#cero{
+button {
+    --neon-color: #ffffff;
+    display: block;
+    font-size: 3rem;
+    border-radius: 2rem;
+    padding: 0.4em;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0.2rem solid #fff;
+    color: #fff;
+    box-shadow: 0 0 15px var(--neon-color), inset 0 0 15px var(--neon-color);
+    text-shadow: 0 0 7px var(--neon-color),
+        0 0 10px var(--neon-color),
+        0 0 21px var(--neon-color),
+        0 0 42px var(--neon-color),
+        0 0 82px var(--neon-color),
+        0 0 92px var(--neon-color),
+        0 0 102px var(--neon-color),
+        0 0 151px var(--neon-color);
+}
+button[data-all-clear],
+button[data-number="0"] {
     grid-column: span 2;
-    width: 150px;
+}
+button.functions {
+    --neon-color: var(--green);
+}
+button.number {
+    --neon-color: var(--dark-pink);
+}
+button.operator {
+    --neon-color: var(--blue);
+}
+
+button:active {
+    box-shadow: 0 0 25px var(--neon-color), inset 0 0 25px var(--neon-color);
+    text-shadow: 0 0 7px var(--neon-color),
+        0 0 10px var(--neon-color),
+        0 0 21px var(--neon-color),
+        0 0 42px var(--neon-color),
+        0 0 82px var(--neon-color),
+        0 0 92px var(--neon-color),
+        0 0 102px var(--neon-color),
+        0 0 151px var(--neon-color);
 }
