@@ -11,6 +11,30 @@ class Calculator {
         }
     }
 
+    extractKey({ key }) {
+        if (validKeys.includes(key)) {
+            switch(key) {
+                case "+":
+                case "/":
+                case "-":
+                case "*":
+                    this.insertOperation(key);
+                    break;
+                case "Backspace":
+                    this.backspace();
+                    break;
+                case ".":
+                    this.insertDecimalPoint();
+                    break;
+                case "Enter":
+                    this.generateResult();
+                    break;
+                default:
+                    this.insertNumber(key);
+            }
+        }
+    }
+
     backspace(){
         switch(this.getLastInputType()){
             case "number":
@@ -75,7 +99,7 @@ class Calculator {
                     return simplifyExpression(currentExpression, operator)
                 }
             }
-            let result = ["*", "÷", "-", "+"].reduce(simplifyExpression,this.getAllInputValues());
+            let result = ["*", "÷", "/", "-", "+"].reduce(simplifyExpression,this.getAllInputValues());
 
             this.clearAll();
             this.addNewInput(result, "number");
@@ -119,9 +143,8 @@ class Calculator {
     }
 
     updateDisplay(){
-        this.display.innerHTML = this.getAllInputValues().join("");
+        this.display.innerHTML = this.getAllInputValues().join("") || "0";
     }
-
 
     performOperation(leftOperand, operation, rightOperand){
         leftOperand = parseFloat(leftOperand);
@@ -133,6 +156,7 @@ class Calculator {
 
         switch(operation){
             case "÷":
+            case "/":
                 return leftOperand / rightOperand
             case "*":
                 return leftOperand * rightOperand
@@ -148,13 +172,13 @@ class Calculator {
 //
 
 const display = document.querySelector('#display')
-
 const numberBtns = document.querySelectorAll('[data-number]');
 const operationBtns = document.querySelectorAll('[data-operator]');
 const backspaceBtn = document.querySelector('[data-backspace]');
 const allClearBtn = document.querySelector('[data-all-clear]');
 const decimalBtn = document.querySelector("[data-decimal]")
 const equalsBtn = document.querySelector('[data-equals]');
+const validKeys = ["1","2","3","4","5","6","7","8","9","0","*", "/", "-", "+", "÷", ".", "Enter", "Backspace"];
 
 //
 
@@ -191,4 +215,6 @@ equalsBtn.addEventListener("click", () => {
     calculator.generateResult();
 })
 
-
+document.addEventListener('keydown', (e) => {
+    calculator.extractKey(e)
+})
