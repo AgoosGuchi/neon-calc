@@ -63,7 +63,8 @@ main {
     border-radius: 25px;
     background-color: #252525;
     border: 0.2rem solid #fff;
-    box-shadow: 0 0 15px var(--pink), inset 0 0 15px var(--pink), 10px 10px 20px 20px rgba(0,0,0,.4);
+    box-shadow: 0 0 15px var(--pink), inset 0 0 15px var(--pink),
+        10px 10px 20px 20px rgba(0,0,0,.4);
 }
 
 #display{
