@@ -120,13 +120,16 @@ class Calculator {
     }
 
     addNewInput(value, type){
+        if(this.getAllInputValues().join("").length >= 16) {
+            return;
+        }
         this.inputHistory.push({ "type": type, "value": value.toString() });
         this.updateDisplay();
     }
 
     appendToLastInput(value){
         const lastItem = this.inputHistory[this.inputHistory.length - 1];
-        if(lastItem.value.length <= 9) {
+        if(lastItem.value.length <= 8) {
             lastItem.value += value.toString();
             this.updateDisplay();
         }
